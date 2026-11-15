@@ -78,12 +78,30 @@ and icons are rendered with `bash scripts/render-raster.sh` (needs Chrome).
 
 ## Database
 
+Create the database and app user once, as a MySQL admin (`sudo mysql`). Use a
+strong password and put the same one in `.env` as `DB_PASSWORD` (wrap it in
+double quotes if it contains `#`):
+
+```sql
+CREATE DATABASE bokul_store CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE USER 'bokul_app'@'localhost' IDENTIFIED BY '<strong password>';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bokul_store.* TO 'bokul_app'@'localhost';
+```
+
 Schema changes only through `db/migrations/` (run as a MySQL admin):
 
 ```bash
 sudo mysql bokul_store < db/migrations/001_schema.sql
 sudo mysql bokul_store < db/migrations/002_seed.sql   # starter catalogue, once
 ```
+
+## Setting it up on another computer
+
+`.env` stays on this machine, so a fresh copy needs its own:
+
+1. `git clone` the repository and run `npm install`.
+2. Copy `.env.example` to `.env` and fill in the values. Copy them from your current `.env` or make new ones.
+3. Create the database using the SQL in the "Database" section above, then run `npm run build && npm start`.
 
 ## Going live
 
