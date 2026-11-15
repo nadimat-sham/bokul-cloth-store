@@ -1,0 +1,12 @@
+/* Bokul Cloth Store — styles.
+   Note: no "Astra CSS" package exists for React (Astra is a WordPress theme), so
+   this is organised custom CSS reproducing the reference site's design language. */
+@import "@fontsource/cormorant-garamond/latin-500.css";
+@import "@fontsource/cormorant-garamond/latin-600.css";
+@import "@fontsource-variable/manrope/wght.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./pages.css";
+@import "./admin.css";

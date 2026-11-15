@@ -1,0 +1,42 @@
+:root {
+  /* Palette */
+  --navy-950: #0b1520;
+  --navy-900: #0f1c29;
+  --navy-800: #13202d;
+  --navy-700: #1c2d3e;
+  --gold-300: #d2ad66;
+  --gold-400: #c29a52;
+  --gold-500: #b08a46;
+  --gold-700: #7a5c22; /* gold text on light backgrounds (AA) */
+  --cream: #f6f1e7;
+  --paper: #fffdf8;
+  --sand: #ebdfc6;
+  --sand-200: #f1e8d6;
+  --sage: #6f978e;
+  --ink: #16212d;
+  --ink-soft: #3f4856;
+  --muted: #5a6270;
+  --line: #e0d4bd;
+  --line-dark: rgba(255, 255, 255, 0.14);
+  --danger: #a3302a;
+  --success: #2f6b4f;
+
+  /* Type */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope Variable", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-body: clamp(0.94rem, 0.9rem + 0.18vw, 1rem);
+  --fs-h1: clamp(2.6rem, 1.6rem + 4.6vw, 5.4rem);
+  --fs-h2: clamp(2.1rem, 1.5rem + 2.6vw, 3.5rem);
+  --fs-h3: clamp(1.35rem, 1.2rem + 0.6vw, 1.6rem);
+
+  /* Space & shape */
+  --rail-w: 76px;
+  --topbar-h: 64px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --container: 1180px;
+  --section-y: clamp(64px, 5rem + 3vw, 128px);
+  --radius: 0px;
+  --shadow-card: 0 18px 40px -22px rgba(19, 32, 45, 0.35);
+  --shadow-float: 0 30px 70px -30px rgba(15, 28, 41, 0.45);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}

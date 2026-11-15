@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe8da"/><stop offset="1" stop-color="#dcd0b6"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#fffaf0" stop-opacity=".75"/><stop offset="1" stop-color="#fffaf0" stop-opacity="0"/></radialGradient>
+<pattern id="p-indigo-block" width="48" height="48" patternUnits="userSpaceOnUse"><rect width="48" height="48" fill="#2f4b7c"/><g fill="none" stroke="#f1ead9" stroke-width="2"><path d="M24 6 L42 24 L24 42 L6 24 Z"/><circle cx="24" cy="24" r="5" fill="#f1ead9"/></g><circle cx="0" cy="0" r="3" fill="#f1ead9"/><circle cx="48" cy="48" r="3" fill="#f1ead9"/></pattern>
+<pattern id="pallu" width="48" height="48" patternUnits="userSpaceOnUse"><rect width="48" height="48" fill="#2c4775"/><g fill="none" stroke="#f1ead9" stroke-width="2"><path d="M24 6 L42 24 L24 42 L6 24 Z"/><circle cx="24" cy="24" r="5" fill="#f1ead9"/></g><circle cx="0" cy="0" r="3" fill="#f1ead9"/><circle cx="48" cy="48" r="3" fill="#f1ead9"/></pattern>
+</defs>
+<rect width="600" height="750" fill="url(#bg)"/><rect width="600" height="750" fill="url(#glow)"/>
+<ellipse cx="300" cy="722" rx="200" ry="14" fill="#5a4a2e" opacity=".12"/>
+<g fill="none" stroke="#6f5a35" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M300 120 C300 104 320 100 320 82 C320 66 306 58 294 62 C286 65 283 72 284 78"/><path d="M300 122 L150 182 L450 182 Z" fill="#8a6f40" stroke="#6f5a35"/></g>
+<path d="M240 176 Q300 214 360 176 L440 200 L500 336 L452 356 L420 276 L430 690 L170 690 L180 276 L148 356 L100 336 L160 200 Z" fill="url(#p-indigo-block)" stroke="#223659" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M262 186 Q300 222 338 186" fill="none" stroke="#f1ead9" stroke-width="5"/>
+<path d="M170 672 L430 672" stroke="#f1ead9" stroke-width="7"/><path d="M452 356 L500 336" stroke="#f1ead9" stroke-width="6"/><path d="M148 356 L100 336" stroke="#f1ead9" stroke-width="6"/>
+</svg>
