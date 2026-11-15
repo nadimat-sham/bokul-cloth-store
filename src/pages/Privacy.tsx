@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { LegalPage } from "./Legal.tsx";
-import { useSite } from "../lib/site.tsx";
+import { telHref, useSite } from "../lib/site.tsx";
 import { STORE } from "../../shared/store.ts";
 
 export function PrivacyPage() {
@@ -13,7 +13,7 @@ export function PrivacyPage() {
       intro="We collect only what we need to deliver your order and answer your questions — and we never sell it."
     >
       <h2>Who we are</h2>
-      <p>{STORE.name} runs this website and is responsible for the personal information collected through it.{site.email ? <> You can reach us at <a href={`mailto:${site.email}`}>{site.email}</a>.</> : null}</p>
+      <p>{STORE.name} ({site.address}) runs this website and is responsible for the personal information collected through it.{" "}You can reach us on <a href={telHref(site.phone)}>{site.phone}</a>{site.email ? <> or at <a href={`mailto:${site.email}`}>{site.email}</a></> : null}.</p>
 
       <h2>What we collect</h2>
       <ul>

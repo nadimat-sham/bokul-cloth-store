@@ -213,16 +213,24 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   color: #fff;
   flex-shrink: 0;
 }
-.logo svg {
-  transition: transform 0.6s var(--ease);
+.logo__mark {
+  width: 50px;
+  color: var(--gold-300);
+  transition: transform 0.4s var(--ease);
 }
-.logo:hover svg {
-  transform: rotate(22.5deg);
+.logo:hover .logo__mark {
+  transform: translateY(-1px) scale(1.04);
+}
+.logo--compact .logo__mark {
+  width: 50px;
+}
+.logo--dark .logo__mark {
+  color: var(--gold-500);
 }
 .logo__text {
   display: flex;
@@ -389,6 +397,13 @@
   align-items: flex-start;
   overflow-wrap: anywhere;
 }
+.footer__map {
+  display: inline-block;
+  margin-top: 2px;
+  color: var(--gold-300) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
 .footer__contact svg {
   flex-shrink: 0;
   margin-top: 5px;
@@ -452,4 +467,32 @@
 
 .split__text .section-heading {
   margin-bottom: 22px;
+}
+
+/* ---------- Brand shapes (traced from the official logo) ---------- */
+.brand-shape {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: var(--shape) center / contain no-repeat;
+  mask: var(--shape) center / contain no-repeat;
+}
+.brand-shape--bcs {
+  --shape: url("/brand/bcs.svg");
+  aspect-ratio: 1566 / 857;
+}
+.brand-shape--bn {
+  --shape: url("/brand/bokul-bn.svg");
+  aspect-ratio: 2690 / 900;
+}
+.brand-shape--mandala {
+  --shape: url("/brand/mandala.svg");
+  aspect-ratio: 2376 / 937;
+}
+.footer__bn {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  margin-top: 18px;
+  color: var(--gold-300);
 }

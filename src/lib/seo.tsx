@@ -3,7 +3,7 @@
 // on client-side navigation.
 import { createContext, useContext, useEffect } from "react";
 import type { Product, SiteConfig } from "../../shared/types.ts";
-import { STORE, EXCHANGE_DAYS } from "../../shared/store.ts";
+import { ADDRESS, MAPS_URL, PHONE, STORE, EXCHANGE_DAYS } from "../../shared/store.ts";
 import { useSite } from "./site.tsx";
 
 export interface HeadState {
@@ -137,17 +137,25 @@ function applyHead(h: HeadState, site: SiteConfig) {
 export function storeLd(site: SiteConfig): object {
   return {
     "@context": "https://schema.org",
-    "@type": "OnlineStore",
+    "@type": ["ClothingStore", "OnlineStore"],
     "@id": `${site.url}/#store`,
     name: STORE.name,
-    alternateName: STORE.shortName,
+    alternateName: [STORE.bengaliName, STORE.shortName, STORE.monogram],
+    founder: { "@type": "Person", name: STORE.proprietor, image: `${site.url}/images/owner/motiur-rahman.webp` },
     url: `${site.url}/`,
     logo: `${site.url}/icon-512.png`,
     image: `${site.url}/og-image.png`,
     description: STORE.description,
     ...(site.email ? { email: site.email } : {}),
-    ...(site.phone ? { telephone: site.phone } : {}),
-    ...(site.address ? { address: { "@type": "PostalAddress", streetAddress: site.address, addressCountry: STORE.countryCode } } : {}),
+    telephone: PHONE.international,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: ADDRESS.street,
+      addressLocality: ADDRESS.locality,
+      addressRegion: ADDRESS.region,
+      addressCountry: ADDRESS.countryCode,
+    },
+    hasMap: MAPS_URL,
     areaServed: { "@type": "Country", name: STORE.country },
     currenciesAccepted: STORE.currency,
     paymentAccepted: "Cash on delivery",

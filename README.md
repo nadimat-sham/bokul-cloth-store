@@ -67,7 +67,7 @@ the stream needs `proxy_buffering off;` (the server also sends `X-Accel-Bufferin
   `shared/store.ts` — the pages, FAQ, checkout, emails and structured data all read them.
 - FAQ: `src/content/faq.ts`. Size charts: `src/pages/SizeGuide.tsx`.
 - Terms / Privacy: `src/pages/Terms.tsx`, `src/pages/Privacy.tsx`.
-- Public phone/address: `STORE_PHONE` / `STORE_ADDRESS` in `.env` (shown only when set).
+- Shop address and phone number (footer, contact, about, FAQ, product and order pages, emails, structured data): `ADDRESS` and `PHONE` in `shared/store.ts`.
 
 ## Images
 

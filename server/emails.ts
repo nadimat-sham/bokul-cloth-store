@@ -1,6 +1,6 @@
 // Branded HTML + plain-text emails.
 import type { ContactRequest, Order, OrderStatus } from "../shared/types.ts";
-import { SHIPPING, STATUS_LABEL, STORE, formatMoney, EXCHANGE_DAYS } from "../shared/store.ts";
+import { ADDRESS_TEXT, SHIPPING, STATUS_LABEL, STORE, formatMoney, EXCHANGE_DAYS } from "../shared/store.ts";
 import { config } from "./config.ts";
 import type { MailMessage } from "./mailer.ts";
 
@@ -14,12 +14,14 @@ function layout(title: string, body: string): string {
 <tr><td style="background:#13202d;padding:22px 28px;text-align:center">
 <div style="font-family:Georgia,'Times New Roman',serif;font-size:26px;color:#f6f1e7;letter-spacing:.5px">Bokul</div>
 <div style="font-size:10px;letter-spacing:4px;color:#c9a25a;text-transform:uppercase;margin-top:4px">Cloth Store</div>
+<div style="font-size:14px;color:#c9a25a;margin-top:6px">${STORE.bengaliName}</div>
 </td></tr>
 <tr><td style="padding:30px 28px 8px"><h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:24px;margin:0 0 14px;color:#13202d">${esc(title)}</h1>${body}</td></tr>
 <tr><td style="padding:22px 28px 28px;border-top:1px solid #efe7d6;font-size:12px;color:#6b7280;line-height:1.6">
 ${esc(STORE.name)} · <a href="${config.siteUrl}" style="color:#8a6a2e">${config.siteUrl.replace(/^https?:\/\//, "")}</a>
 ${config.storeEmail ? ` · <a href="mailto:${esc(config.storeEmail)}" style="color:#8a6a2e">${esc(config.storeEmail)}</a>` : ""}
 ${config.storePhone ? ` · ${esc(config.storePhone)}` : ""}
+<br>${esc(ADDRESS_TEXT)}
 </td></tr></table></td></tr></table></body></html>`;
 }
 
@@ -71,6 +73,7 @@ export function orderConfirmationEmail(order: Order, token: string): MailMessage
         orderTable(order) +
         addressBlock(order) +
         p(`Expected delivery: ${esc(SHIPPING[order.deliveryZone].days)} after confirmation. Pay in cash when your parcel arrives. Unworn items can be exchanged within ${EXCHANGE_DAYS} days.`) +
+        p("ধন্যবাদ, আবার আসবেন!") +
         button(url, "View your order"),
     ),
     text: `Thank you for your order ${order.orderNumber} at ${STORE.name}.\n\n${orderText(order)}\n\nWe will call you to confirm before dispatch. Track your order: ${url}`,

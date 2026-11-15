@@ -5,7 +5,7 @@ import { PageHero } from "../components/PageHero.tsx";
 import { SectionHeading } from "../components/SectionHeading.tsx";
 import { CtaBand } from "../components/CtaBand.tsx";
 import { Icon } from "../components/Icon.tsx";
-import { EXCHANGE_DAYS, STORE } from "../../shared/store.ts";
+import { ADDRESS_TEXT, EXCHANGE_DAYS, MAPS_URL, PHONE, PHONE_HREF, STORE } from "../../shared/store.ts";
 
 export function AboutPage() {
   const site = useSite();
@@ -22,15 +22,43 @@ export function AboutPage() {
       <section className="section">
         <div className="container split">
           <figure className="framed reveal">
-            <img src="/images/categories/women.svg" alt="An ivory jamdani-weave saree and a rose-print kurti on hangers" width={800} height={1000} loading="lazy" />
+            <img src="/brand/bokul-logo-original.webp" alt="The Bokul Cloth Store logo: the BCS monogram over a mandala, the shop name বকুল ক্লথ ষ্টোর, the proprietor's name, phone numbers and the shop address in Bengali" width={1050} height={1050} loading="lazy" />
           </figure>
           <div className="split__text prose">
-            <SectionHeading align="left" eyebrow="Why “Bokul”" title="Named after a small flower with a big fragrance" />
+            <SectionHeading align="left" eyebrow="About BCS" title="Clothing for the whole family, from Nachole" />
             <p className="reveal">
-              The bokul flower is tiny and cream-coloured, but its scent fills a whole courtyard and lingers long after it falls. We wanted our clothes to feel the same way — modest and easy to wear, yet something you keep reaching for.
+              {STORE.name} — {STORE.bengaliName}, or simply BCS — is run by its proprietor, <strong>{STORE.proprietor}</strong>, known to customers as Bokul, which is where the shop gets its name.
             </p>
             <p className="reveal">
-              {STORE.name} sells everyday and festive clothing online: cotton and georgette sarees, three-pieces, kurtis and tunics for women; panjabis, shirts, polos and chinos for men; frocks, panjabi sets and tees for kids; and ornas and gamchas to finish an outfit.
+              {STORE.name} sells everyday and festive clothing from our shop at Adhunik Market in Nachole and online: cotton and georgette sarees, three-pieces, kurtis and tunics for women; panjabis, shirts, polos and chinos for men; frocks, panjabi sets and tees for kids; and ornas and gamchas to finish an outfit.
+            </p>
+            <p className="reveal">
+              Prefer to see and feel the fabric first? Visit us at <strong>{ADDRESS_TEXT}</strong>.{" "}
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">Get directions</a>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section section--navy" aria-labelledby="owner-title">
+        <div className="container split split--reverse">
+          <figure className="framed framed--dark reveal">
+            <img
+              src="/images/owner/motiur-rahman-800.webp"
+              srcSet="/images/owner/motiur-rahman-800.webp 800w, /images/owner/motiur-rahman.webp 1280w"
+              sizes="(min-width: 900px) 50vw, 100vw"
+              alt={`${STORE.proprietor} (Bokul), owner of ${STORE.name}, in a mustard field with a child`}
+              width={1280}
+              height={720}
+              loading="lazy"
+            />
+          </figure>
+          <div className="split__text">
+            <SectionHeading align="left" tone="dark" eyebrow="Meet the owner" id="owner-title" title={`${STORE.proprietor} (Bokul)`} />
+            <p className="reveal on-dark">
+              {STORE.proprietor}, known to customers as Bokul, is the owner and proprietor of {STORE.name} — the name on the sign and the reason the shop is called Bokul.
+            </p>
+            <p className="reveal on-dark">
+              Drop in at {ADDRESS_TEXT} to say hello, or call <a href={PHONE_HREF} className="on-dark-link">{PHONE.display}</a>.
             </p>
           </div>
         </div>

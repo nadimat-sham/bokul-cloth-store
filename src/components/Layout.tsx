@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router";
-import { Logo } from "./Logo.tsx";
+import { BengaliName, Logo } from "./Logo.tsx";
 import { Icon } from "./Icon.tsx";
 import { Ornament } from "./SectionHeading.tsx";
 import { useCart } from "../lib/cart.tsx";
 import { useSite, telHref } from "../lib/site.tsx";
 import { api } from "../lib/api.ts";
-import { STORE, FREE_SHIPPING_FROM, formatMoney } from "../../shared/store.ts";
+import { MAPS_URL, PHONE, PHONE_HREF, STORE, FREE_SHIPPING_FROM, formatMoney } from "../../shared/store.ts";
 
 const RAIL_LINKS = [
   { to: "/shop/women", label: "Women" },
@@ -145,6 +145,9 @@ export function Layout({ children }: { children: ReactNode }) {
           <Link to="/cart" className="btn btn--gold">
             View bag{ready && count ? ` (${count})` : ""}
           </Link>
+          <a href={PHONE_HREF} className="btn btn--ghost-light">
+            <Icon name="phone" size={16} /> {PHONE.display}
+          </a>
           <p>Cash on delivery across Bangladesh · Free delivery from {formatMoney(FREE_SHIPPING_FROM)}</p>
         </div>
       </div>
@@ -199,6 +202,7 @@ function Footer() {
       <div className="container footer__grid">
         <div className="footer__brand">
           <Logo />
+          <BengaliName className="footer__bn" label={STORE.bengaliName} />
           <p>{STORE.description}</p>
           <Newsletter />
         </div>
@@ -240,7 +244,13 @@ function Footer() {
             {site.address && (
               <li>
                 <Icon name="pin" size={16} />
-                <span>{site.address}</span>
+                <span>
+                  {site.address}
+                  <br />
+                  <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="footer__map">
+                    Get directions<span className="visually-hidden"> (opens Google Maps)</span>
+                  </a>
+                </span>
               </li>
             )}
             <li>

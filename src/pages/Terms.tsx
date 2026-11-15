@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { LegalPage } from "./Legal.tsx";
-import { useSite } from "../lib/site.tsx";
+import { telHref, useSite } from "../lib/site.tsx";
 import { EXCHANGE_DAYS, FREE_SHIPPING_FROM, SHIPPING, STORE, formatMoney } from "../../shared/store.ts";
 
 export function TermsPage() {
@@ -51,7 +51,7 @@ export function TermsPage() {
       <p>We may update these terms from time to time. The version on this page when you place your order applies to that order.</p>
 
       <h2>10. Governing law and contact</h2>
-      <p>These terms are governed by the laws of the People's Republic of Bangladesh. Questions? <Link to="/contact">Contact us</Link>{site.email ? <> or email <a href={`mailto:${site.email}`}>{site.email}</a></> : null}.</p>
+      <p>These terms are governed by the laws of the People's Republic of Bangladesh. Questions? Call <a href={telHref(site.phone)}>{site.phone}</a>, visit us at {site.address}, <Link to="/contact">contact us</Link>{site.email ? <> or email <a href={`mailto:${site.email}`}>{site.email}</a></> : null}.</p>
     </LegalPage>
   );
 }

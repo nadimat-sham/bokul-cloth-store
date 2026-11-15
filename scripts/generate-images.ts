@@ -217,11 +217,6 @@ ${groups.join("\n")}
 </svg>`;
 }
 
-/** Brand mark used for the favicon (the React logo component draws the same mark). */
-function markSvg(bg: boolean): string {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">${bg ? `<rect width="64" height="64" rx="12" fill="#13202d"/>` : ""}${bokulFlower(32, 32, 26, "#c9a25a", 16, "#f6f1e7")}</svg>`;
-}
-
 function write(rel: string, svg: string) {
   const file = join(OUT, rel);
   mkdirSync(join(file, ".."), { recursive: true });
@@ -248,6 +243,4 @@ const cats: Record<string, string[]> = {
 };
 for (const [slug, items] of Object.entries(cats)) write(`categories/${slug}.svg`, railScene(items.map(bySlug), 800, 1000, "light"));
 
-writeFileSync(join(OUT, "..", "favicon.svg"), markSvg(true));
-writeFileSync(join(OUT, "brand", "mark.svg").replace("/brand/mark.svg", "/mark.svg"), markSvg(false));
-console.log("wrote favicon.svg, mark.svg");
+// The favicon and logo come from the official artwork in public/brand/ (not generated here).

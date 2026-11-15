@@ -1,24 +1,37 @@
 import { Link } from "react-router";
+import { STORE } from "../../shared/store.ts";
 
-/** The bokul blossom — a star of narrow petals around a small centre. */
-export function BokulMark({ size = 40, color = "#c9a25a", centre = "#f6f1e7" }: { size?: number; color?: string; centre?: string }) {
-  const petals = Array.from({ length: 16 }, (_, i) => i * 22.5);
+// Brand artwork traced from the official logo (public/brand/*.svg). The shapes
+// are used as CSS masks so they take the surrounding text colour.
+
+interface BrandProps {
+  className?: string;
+  /** Accessible name; omit for purely decorative use. */
+  label?: string;
+}
+
+function BrandShape({ kind, className = "", label }: BrandProps & { kind: "bcs" | "bn" | "mandala" }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-      <g fill={color}>
-        {petals.map((a) => (
-          <ellipse key={a} cx="32" cy="17.7" rx="3.4" ry="11.7" transform={`rotate(${a} 32 32)`} />
-        ))}
-      </g>
-      <circle cx="32" cy="32" r="5.2" fill={centre} />
-    </svg>
+    <span
+      className={`brand-shape brand-shape--${kind} ${className}`}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+    />
   );
 }
 
+/** The "BCS" monogram with its swoosh. */
+export const BcsMark = (p: BrandProps) => <BrandShape kind="bcs" {...p} />;
+/** The Bengali wordmark "বকুল ক্লথ ষ্টোর". */
+export const BengaliName = (p: BrandProps) => <BrandShape kind="bn" {...p} />;
+/** The half-mandala ornament from the logo (decorative). */
+export const Mandala = (p: BrandProps) => <BrandShape kind="mandala" {...p} />;
+
 export function Logo({ variant = "light", compact = false }: { variant?: "light" | "dark"; compact?: boolean }) {
   return (
-    <Link to="/" className={`logo logo--${variant}${compact ? " logo--compact" : ""}`} aria-label={compact ? "Bokul Cloth Store home" : undefined}>
-      <BokulMark size={compact ? 34 : 40} centre={variant === "light" ? "#13202d" : "#f6f1e7"} />
+    <Link to="/" className={`logo logo--${variant}${compact ? " logo--compact" : ""}`} aria-label={compact ? `${STORE.name} home` : undefined}>
+      <BcsMark className="logo__mark" />
       {!compact && (
         <span className="logo__text">
           <span className="logo__name">Bokul</span> <span className="logo__sub">Cloth Store</span>

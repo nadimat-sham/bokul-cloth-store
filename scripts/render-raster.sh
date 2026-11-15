@@ -18,25 +18,25 @@ shot() { # html-file width height out
 
 STYLE="<style>@font-face{font-family:C;src:url(file://$FONT)}@font-face{font-family:M;src:url(file://$SANS)}html,body{margin:0}</style>"
 
+MASK="display:inline-block;background:currentColor;-webkit-mask:var(--s) center/contain no-repeat"
 cat > "$TMP/og.html" <<HTML
 <!doctype html><html><head>$STYLE</head><body>
 <div style="position:relative;width:1200px;height:630px;background:#0f1c29;overflow:hidden;font-family:M">
 <img src="file://$PUB/images/scenes/hero.svg" style="position:absolute;right:-180px;top:0;height:630px">
 <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0b1520 0%,rgba(11,21,32,.9) 45%,rgba(11,21,32,0) 80%)"></div>
-<div style="position:absolute;left:80px;top:120px;color:#fff">
-<img src="file://$PUB/images/mark.svg" width="84" height="84">
-<div style="font-family:C;font-size:92px;line-height:1;margin-top:26px">Bokul Cloth Store</div>
-<div style="font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:#d2ad66;margin-top:22px;font-weight:700">Everyday &amp; festive clothing · Bangladesh</div>
-<div style="font-size:24px;color:rgba(255,255,255,.85);margin-top:28px">Sarees · Three-pieces · Panjabis · Kids' wear</div>
-<div style="font-size:20px;color:rgba(255,255,255,.7);margin-top:10px">Cash on delivery nationwide</div>
+<span style="$MASK;--s:url(file://$PUB/brand/mandala.svg);position:absolute;left:-60px;bottom:-40px;width:760px;height:300px;color:#d2ad66;opacity:.08"></span>
+<div style="position:absolute;left:80px;top:96px;color:#fff">
+<span style="$MASK;--s:url(file://$PUB/brand/bcs.svg);width:150px;height:82px;color:#d2ad66"></span>
+<div style="font-family:C;font-size:88px;line-height:1;margin-top:22px">Bokul Cloth Store</div>
+<span style="$MASK;--s:url(file://$PUB/brand/bokul-bn.svg);width:300px;height:100px;color:#d2ad66;margin-top:14px"></span>
+<div style="font-size:24px;color:rgba(255,255,255,.85);margin-top:14px">Adhunik Market, Nachole · Cash on delivery across Bangladesh</div>
 </div></div></body></html>
 HTML
 shot "$TMP/og.html" 1200 630 "$PUB/og-image.png"
 
 for size in 180 512; do
   cat > "$TMP/icon.html" <<HTML
-<!doctype html><html><body style="margin:0"><div style="width:${size}px;height:${size}px;background:#13202d;display:grid;place-items:center">
-<img src="file://$PUB/images/mark.svg" style="width:72%;height:72%"></div></body></html>
+<!doctype html><html><body style="margin:0"><img src="file://$PUB/favicon.svg" style="display:block;width:${size}px;height:${size}px"></body></html>
 HTML
   out="$PUB/icon-$size.png"; [ "$size" = 180 ] && out="$PUB/apple-touch-icon.png"
   shot "$TMP/icon.html" "$size" "$size" "$out"

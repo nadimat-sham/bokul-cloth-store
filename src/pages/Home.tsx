@@ -10,7 +10,8 @@ import { FaqList } from "../components/Faq.tsx";
 import { CtaBand } from "../components/CtaBand.tsx";
 import { Icon, type IconName } from "../components/Icon.tsx";
 import { HOME_FAQS } from "../content/faq.ts";
-import { EXCHANGE_DAYS, FREE_SHIPPING_FROM, SHIPPING, STORE, formatMoney } from "../../shared/store.ts";
+import { BengaliName, Mandala } from "../components/Logo.tsx";
+import { ADDRESS, EXCHANGE_DAYS, PHONE, FREE_SHIPPING_FROM, SHIPPING, STORE, formatMoney } from "../../shared/store.ts";
 import type { Category, ProductListResponse } from "../../shared/types.ts";
 
 const PROMISES: { icon: IconName; title: string; text: string }[] = [
@@ -87,7 +88,7 @@ export function HomePage() {
     <>
       <Seo
         title="Bokul Cloth Store — Sarees, Panjabis & Kids' Wear in Bangladesh"
-        description={`Shop cotton sarees, three-pieces, kurtis, panjabis, shirts and kids' wear online at Bokul Cloth Store. Cash on delivery across Bangladesh, free delivery from ${formatMoney(FREE_SHIPPING_FROM)} and ${EXCHANGE_DAYS}-day returns.`}
+        description={`Shop cotton sarees, three-pieces, kurtis, panjabis, shirts and kids' wear at Bokul Cloth Store, Adhunik Market, Nachole — or online. Cash on delivery across Bangladesh, free delivery from ${formatMoney(FREE_SHIPPING_FROM)} and ${EXCHANGE_DAYS}-day returns.`}
         path="/"
         jsonLd={[storeLd(site), websiteLd(site)]}
       />
@@ -97,8 +98,10 @@ export function HomePage() {
           <img src="/images/scenes/hero.svg" alt="" width={1600} height={1000} fetchPriority="high" decoding="async" />
         </picture>
         <div className="hero__shade" aria-hidden="true" />
+        <Mandala className="hero__mandala" />
         <div className="container hero__inner">
-          <p className="eyebrow eyebrow--gold hero__eyebrow">Online clothing store · Bangladesh</p>
+          <BengaliName className="hero__bn" label={STORE.bengaliName} />
+          <p className="eyebrow eyebrow--gold hero__eyebrow">{ADDRESS.locality}, {ADDRESS.region} · Delivering nationwide</p>
           <Ornament align="left" />
           <h1 id="hero-title" className="display hero__title">
             Clothes That Feel <br className="br-desktop" />
@@ -121,7 +124,7 @@ export function HomePage() {
       <section className="section about-split" aria-labelledby="about-title">
         <div className="container split">
           <figure className="framed reveal">
-            <img src="/images/scenes/about.svg" alt="A kurti, a cotton panjabi and a printed orna hanging on a rail at Bokul Cloth Store" width={1000} height={760} loading="lazy" decoding="async" />
+            <img src="/brand/bokul-logo-original-600.webp" alt="The Bokul Cloth Store logo: the BCS monogram over a mandala with the shop name বকুল ক্লথ ষ্টোর" width={600} height={600} loading="lazy" decoding="async" />
           </figure>
           <div className="split__text">
             <SectionHeading
@@ -129,7 +132,7 @@ export function HomePage() {
               eyebrow="About Bokul"
               id="about-title"
               title="Comfortable clothes for every day of the year"
-              intro="Bokul is named after the small, sweet-scented flower that blooms across Bangladesh. We keep the same spirit in our clothes: simple, light and easy to love."
+              intro={`${STORE.bengaliName} is run by its proprietor, ${STORE.proprietor} — known to customers as Bokul — from Adhunik Market in Nachole.`}
             />
             <p className="reveal">
               We stock women's sarees, three-pieces and kurtis, men's panjabis and shirts, children's frocks and sets, and finishing pieces like ornas and gamchas. Every listing tells you the fabric, colour, care and the sizes actually in stock, so you know what you are ordering.
@@ -239,7 +242,7 @@ export function HomePage() {
 
       <CtaBand
         title="Find Your Next Favourite Outfit"
-        text={`Browse the full ${STORE.name} collection, add what you love to your bag and pay in cash when it reaches your door.`}
+        text={`Browse the full ${STORE.name} collection, add what you love to your bag and pay in cash when it reaches your door — or call us on ${PHONE.display}.`}
         primary={{ to: "/shop", label: "Start shopping" }}
         secondary={{ to: "/contact", label: "Ask us a question" }}
       />

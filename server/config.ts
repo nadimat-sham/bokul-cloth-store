@@ -1,5 +1,6 @@
 // Reads server settings from the environment (.env is loaded by `node --env-file`).
 import type { SiteConfig } from "../shared/types.ts";
+import { ADDRESS_TEXT, PHONE } from "../shared/store.ts";
 
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
@@ -28,8 +29,7 @@ export const config = {
     from: env("SMTP_FROM").replace(/^"|"$/g, ""),
   },
   storeEmail: env("STORE_EMAIL") || env("SMTP_USER"),
-  storePhone: env("STORE_PHONE"),
-  storeAddress: env("STORE_ADDRESS"),
+  storePhone: PHONE.display,
   ga4Id: env("GA4_MEASUREMENT_ID"),
   googleVerification: env("GOOGLE_SITE_VERIFICATION"),
   bingVerification: env("BING_SITE_VERIFICATION"),
@@ -40,7 +40,7 @@ export const site: SiteConfig = {
   url: config.siteUrl,
   email: config.storeEmail,
   phone: config.storePhone,
-  address: config.storeAddress,
+  address: ADDRESS_TEXT,
   ga4Id: /^G-[A-Z0-9]+$/.test(config.ga4Id) ? config.ga4Id : "",
 };
 

@@ -1,6 +1,6 @@
 // Frequently asked questions. Answers are built from the policy constants in
 // shared/store.ts so they never drift from checkout, emails or other pages.
-import { EXCHANGE_DAYS, FREE_SHIPPING_FROM, SHIPPING, STORE, formatMoney } from "../../shared/store.ts";
+import { ADDRESS_TEXT, EXCHANGE_DAYS, FREE_SHIPPING_FROM, PHONE, SHIPPING, STORE, formatMoney } from "../../shared/store.ts";
 
 export interface FaqItem {
   q: string;
@@ -34,7 +34,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Can I change or cancel my order?",
-        a: "Yes, as long as it has not been dispatched. Reply to your order confirmation email or use the contact page with your order number and we will update or cancel it for you.",
+        a: `Yes, as long as it has not been dispatched. Call us on ${PHONE.display}, reply to your order confirmation email or use the contact page, with your order number, and we will update or cancel it for you.`,
       },
       {
         q: "How can I check my order status?",
@@ -83,12 +83,24 @@ export const FAQ_GROUPS: FaqGroup[] = [
         a: "We sell everyday and festive clothing for the whole family: cotton and georgette sarees, three-pieces, kurtis and tunics for women; panjabis, shirts, polos and chinos for men; frocks, panjabi sets and tees for kids; plus ornas and gamchas.",
       },
       {
+        q: "Where is Bokul Cloth Store? Can I visit the shop?",
+        a: `Yes. Our shop is at ${ADDRESS_TEXT}. You can see and try the clothes there, or order online from anywhere in ${STORE.country} with cash on delivery.`,
+      },
+      {
         q: "How can I contact Bokul Cloth Store?",
-        a: "Use the form on our contact page or email us — we reply within one working day. For an existing order, please include your order number so we can help faster.",
+        a: `Call us on ${PHONE.display}, visit the shop at ${ADDRESS_TEXT}, or use the form on our contact page — we reply to messages within one working day. For an existing order, please have your order number ready.`,
       },
     ],
   },
 ];
 
 export const ALL_FAQS: FaqItem[] = FAQ_GROUPS.flatMap((g) => g.items);
-export const HOME_FAQS: FaqItem[] = [ALL_FAQS[1], ALL_FAQS[5], ALL_FAQS[7], ALL_FAQS[8], ALL_FAQS[2], ALL_FAQS[11]];
+const byQ = (start: string) => ALL_FAQS.find((f) => f.q.startsWith(start))!;
+export const HOME_FAQS: FaqItem[] = [
+  byQ("Where is Bokul"),
+  byQ("What payment"),
+  byQ("Do you deliver"),
+  byQ("Can I return"),
+  byQ("How do I find my size"),
+  byQ("How can I contact"),
+];

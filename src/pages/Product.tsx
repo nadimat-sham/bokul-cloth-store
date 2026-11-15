@@ -12,7 +12,7 @@ import { ProductGrid } from "../components/ProductCard.tsx";
 import { SectionHeading } from "../components/SectionHeading.tsx";
 import { Icon } from "../components/Icon.tsx";
 import { NotFoundPage } from "./NotFound.tsx";
-import { EXCHANGE_DAYS, FREE_SHIPPING_FROM, MAX_QTY_PER_LINE, SHIPPING, formatMoney } from "../../shared/store.ts";
+import { EXCHANGE_DAYS, FREE_SHIPPING_FROM, MAX_QTY_PER_LINE, PHONE, PHONE_HREF, SHIPPING, formatMoney } from "../../shared/store.ts";
 import type { Product } from "../../shared/types.ts";
 
 export function ProductPage() {
@@ -123,6 +123,7 @@ function ProductView({ product: p, related }: { product: Product; related: Produ
                 <li><Icon name="cash" size={18} /> Cash on delivery — pay when it arrives</li>
                 <li><Icon name="truck" size={18} /> Dhaka {SHIPPING.inside_dhaka.days} · elsewhere {SHIPPING.outside_dhaka.days}; free from {formatMoney(FREE_SHIPPING_FROM)}</li>
                 <li><Icon name="refresh" size={18} /> {EXCHANGE_DAYS}-day returns & exchanges on unworn items</li>
+                <li><Icon name="phone" size={18} /> <span>Questions or prefer to order by phone? Call <a href={PHONE_HREF}>{PHONE.display}</a></span></li>
               </ul>
             </div>
           </div>

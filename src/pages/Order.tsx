@@ -6,7 +6,7 @@ import { useApi } from "../lib/data.tsx";
 import { orderKey } from "../lib/queries.ts";
 import { PageHero } from "../components/PageHero.tsx";
 import { Icon } from "../components/Icon.tsx";
-import { SHIPPING, STATUS_LABEL, formatMoney } from "../../shared/store.ts";
+import { PHONE, PHONE_HREF, SHIPPING, STATUS_LABEL, formatMoney } from "../../shared/store.ts";
 import type { Order, OrderStatus } from "../../shared/types.ts";
 
 const STEPS: OrderStatus[] = ["pending", "confirmed", "shipped", "delivered"];
@@ -38,7 +38,7 @@ export function OrderPage() {
         intro={
           order
             ? justPlaced
-              ? `Your order number is ${order.orderNumber}. We've emailed a confirmation to ${order.email} and will call ${order.phone} to confirm before dispatch.`
+              ? `Your order number is ${order.orderNumber}. We've emailed a confirmation to ${order.email} and will call ${order.phone} to confirm before dispatch. ধন্যবাদ, আবার আসবেন!`
               : `Placed on ${new Date(order.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.`
             : undefined
         }
@@ -100,7 +100,10 @@ export function OrderPage() {
                   {order.customerName}<br />{order.address}<br />{order.city}<br />{order.phone}
                 </p>
                 <p className="summary__fine">{SHIPPING[order.deliveryZone].label}: usually {SHIPPING[order.deliveryZone].days} after confirmation.</p>
-                <Link to="/contact" className="btn btn--outline btn--block">Questions? Contact us</Link>
+                <a href={PHONE_HREF} className="btn btn--gold btn--block">
+                  <Icon name="phone" size={16} /> Call {PHONE.display}
+                </a>
+                <Link to="/contact" className="btn btn--outline btn--block summary__second">Questions? Contact us</Link>
               </aside>
             </div>
           )}

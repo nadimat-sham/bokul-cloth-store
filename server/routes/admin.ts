@@ -123,7 +123,7 @@ adminRouter.post("/products", async (req, res) => {
     const [r] = await conn.query<ResultSetHeader>(
       `INSERT INTO products (slug, name, category_id, summary, description, fabric, care, color, price, compare_at_price, image, featured, active)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [p.slug, p.name, p.categoryId, p.summary, p.description, p.fabric, p.care, p.color, p.price, p.compareAtPrice, "/images/mark.svg", p.featured, p.active],
+      [p.slug, p.name, p.categoryId, p.summary, p.description, p.fabric, p.care, p.color, p.price, p.compareAtPrice, "/brand/product-placeholder.svg", p.featured, p.active],
     );
     await saveSizes(conn, r.insertId, p.sizes);
     return r.insertId;

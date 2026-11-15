@@ -3,7 +3,7 @@ import { Router } from "express";
 import { listCategories, listProducts } from "./catalog.ts";
 import { config } from "./config.ts";
 import { STATIC_PAGES } from "../shared/pages.ts";
-import { STORE, SHIPPING, FREE_SHIPPING_FROM, EXCHANGE_DAYS, formatMoney } from "../shared/store.ts";
+import { ADDRESS_TEXT, STORE, SHIPPING, FREE_SHIPPING_FROM, EXCHANGE_DAYS, formatMoney } from "../shared/store.ts";
 
 export const seoRouter = Router();
 const xml = (s: string) => s.replace(/[<>&'"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" })[c]!);
@@ -55,6 +55,7 @@ seoRouter.get("/llms.txt", async (_req, res) => {
     `> ${STORE.description}`,
     "",
     "## Key facts",
+    `- Shop address: ${ADDRESS_TEXT}, ${STORE.country}`,
     `- Ships to: all of ${STORE.country}`,
     `- Payment: cash on delivery`,
     ...Object.values(SHIPPING).map((z) => `- Delivery ${z.label.toLowerCase()}: ${formatMoney(z.fee)}, ${z.days}`),

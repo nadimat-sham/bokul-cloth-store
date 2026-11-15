@@ -6,7 +6,7 @@ import { PageHero } from "../components/PageHero.tsx";
 import { Field, TextArea } from "../components/Field.tsx";
 import { Icon } from "../components/Icon.tsx";
 import { useBagCheck } from "./Cart.tsx";
-import { EXCHANGE_DAYS, SHIPPING, formatMoney, shippingFee } from "../../shared/store.ts";
+import { EXCHANGE_DAYS, PHONE, PHONE_HREF, SHIPPING, formatMoney, shippingFee } from "../../shared/store.ts";
 import type { CheckoutRequest, CheckoutResponse, DeliveryZone } from "../../shared/types.ts";
 
 type Form = Omit<CheckoutRequest, "items">;
@@ -113,6 +113,9 @@ export function CheckoutPage() {
                   {busy ? "Placing your order…" : `Place order · ${formatMoney(subtotal + fee)}`}
                 </button>
                 {hasProblem && <p className="field__error">Some items changed — <Link to="/cart">review your bag</Link>.</p>}
+                <p className="summary__fine">
+                  Need help ordering? Call <a href={PHONE_HREF}>{PHONE.display}</a>.
+                </p>
                 <p className="summary__fine">
                   By placing your order you agree to our <Link to="/terms">terms</Link> and <Link to="/privacy">privacy policy</Link>. Unworn items can be returned within {EXCHANGE_DAYS} days.
                 </p>

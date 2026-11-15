@@ -6,7 +6,7 @@ import { api, ApiRequestError } from "../lib/api.ts";
 import { PageHero } from "../components/PageHero.tsx";
 import { Field, TextArea } from "../components/Field.tsx";
 import { Icon } from "../components/Icon.tsx";
-import { STORE } from "../../shared/store.ts";
+import { MAPS_URL, STORE } from "../../shared/store.ts";
 import type { ContactRequest } from "../../shared/types.ts";
 
 const SUBJECTS = ["Question about a product", "Help with an order", "Returns & exchanges", "Wholesale or bulk order", "Something else"];
@@ -60,13 +60,19 @@ export function ContactPage() {
               {site.phone && (
                 <li>
                   <span className="promise__icon"><Icon name="phone" /></span>
-                  <span><strong>Phone</strong><a href={telHref(site.phone)}>{site.phone}</a></span>
+                  <span><strong>Call us</strong><a href={telHref(site.phone)}>{site.phone}</a></span>
                 </li>
               )}
               {site.address && (
                 <li>
                   <span className="promise__icon"><Icon name="pin" /></span>
-                  <span><strong>Address</strong>{site.address}</span>
+                  <span>
+                    <strong>Visit our shop</strong>
+                    {site.address}
+                    <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+                      Get directions on Google Maps<span className="visually-hidden"> (opens in a new tab)</span>
+                    </a>
+                  </span>
                 </li>
               )}
               <li>
@@ -79,7 +85,7 @@ export function ContactPage() {
               </li>
             </ul>
             <p className="contact-info__note">
-              Writing about an order? Include your order number (it starts with “BK”). Many answers are already in our <Link to="/faq">FAQ</Link>.
+              The quickest way to reach us is a phone call. Writing about an order? Include your order number (it starts with “BK”). Many answers are already in our <Link to="/faq">FAQ</Link>.
             </p>
           </div>
 
