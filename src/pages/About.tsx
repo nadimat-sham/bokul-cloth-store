@@ -27,7 +27,7 @@ export function AboutPage() {
           <div className="split__text prose">
             <SectionHeading align="left" eyebrow="About BCS" title="Clothing for the whole family, from Nachole" />
             <p className="reveal">
-              {STORE.name} — {STORE.bengaliName}, or simply BCS — is run by its proprietor, <strong>{STORE.proprietor}</strong>, known to customers as Bokul, which is where the shop gets its name.
+              {STORE.name} ({STORE.bengaliName}) is known to its customers simply as <strong>BCS</strong>. The shop is run by its owner and proprietor, <strong>{STORE.proprietor} (Bokul)</strong>.
             </p>
             <p className="reveal">
               {STORE.name} sells everyday and festive clothing from our shop at Adhunik Market in Nachole and online: cotton and georgette sarees, three-pieces, kurtis and tunics for women; panjabis, shirts, polos and chinos for men; frocks, panjabi sets and tees for kids; and ornas and gamchas to finish an outfit.
@@ -55,7 +55,7 @@ export function AboutPage() {
           <div className="split__text">
             <SectionHeading align="left" tone="dark" eyebrow="Meet the owner" id="owner-title" title={`${STORE.proprietor} (Bokul)`} />
             <p className="reveal on-dark">
-              {STORE.proprietor}, known to customers as Bokul, is the owner and proprietor of {STORE.name} — the name on the sign and the reason the shop is called Bokul.
+              {STORE.proprietor} (Bokul) is the owner and proprietor of {STORE.name}, better known as BCS.
             </p>
             <p className="reveal on-dark">
               Drop in at {ADDRESS_TEXT} to say hello, or call <a href={PHONE_HREF} className="on-dark-link">{PHONE.display}</a>.

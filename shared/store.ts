@@ -11,7 +11,7 @@ export const STORE = {
   proprietor: "Md. Motiur Rahman",
   tagline: "Everyday & festive clothing, delivered across Bangladesh",
   description:
-    "Bokul Cloth Store is a clothing shop at Adhunik Market, Nachole, Chapainawabganj, selling cotton sarees, three-pieces, kurtis, panjabis, shirts and kids' wear in store and online, with cash on delivery across Bangladesh.",
+    "Bokul Cloth Store (BCS) is a clothing shop at Adhunik Market, Nachole, Chapainawabganj, selling cotton sarees, three-pieces, kurtis, panjabis, shirts and kids' wear in store and online, with cash on delivery across Bangladesh.",
   country: "Bangladesh",
   countryCode: "BD",
   currency: "BDT",

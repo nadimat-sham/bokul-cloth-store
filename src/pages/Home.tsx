@@ -87,7 +87,7 @@ export function HomePage() {
   return (
     <>
       <Seo
-        title="Bokul Cloth Store — Sarees, Panjabis & Kids' Wear in Bangladesh"
+        title="BCS — Bokul Cloth Store, Nachole | Sarees, Panjabis & Kids' Wear"
         description={`Shop cotton sarees, three-pieces, kurtis, panjabis, shirts and kids' wear at Bokul Cloth Store, Adhunik Market, Nachole — or online. Cash on delivery across Bangladesh, free delivery from ${formatMoney(FREE_SHIPPING_FROM)} and ${EXCHANGE_DAYS}-day returns.`}
         path="/"
         jsonLd={[storeLd(site), websiteLd(site)]}
@@ -132,7 +132,7 @@ export function HomePage() {
               eyebrow="About Bokul"
               id="about-title"
               title="Comfortable clothes for every day of the year"
-              intro={`${STORE.bengaliName} is run by its proprietor, ${STORE.proprietor} — known to customers as Bokul — from Adhunik Market in Nachole.`}
+              intro={`${STORE.bengaliName} — known simply as BCS — is run by its proprietor, ${STORE.proprietor} (Bokul), from Adhunik Market in Nachole.`}
             />
             <p className="reveal">
               We stock women's sarees, three-pieces and kurtis, men's panjabis and shirts, children's frocks and sets, and finishing pieces like ornas and gamchas. Every listing tells you the fabric, colour, care and the sizes actually in stock, so you know what you are ordering.
